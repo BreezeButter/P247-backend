@@ -13,7 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         },
       }, productAmount : DataTypes.INTEGER,
          oerderStatus : {
-          type: DataTypes.ENUM('inCart','paymentSuccess','delivery','deliverySuccess','reject')
+          type: DataTypes.ENUM('inCart','paymentSuccess','delivery','deliverySuccess','reject'),
+          allowNull: false,
+          validate: {
+            notEmpty: true,
+          },
         }
 },
 {
@@ -25,7 +29,23 @@ module.exports = (sequelize, DataTypes) => {
 
   Order.hasMany(models.OrderItem, {
       foreignKey: {
-        name: 'orederId',
+        name: 'orderId',
+        allowNull: false
+      },
+      onDelete: 'RESTRICT'
+    });
+
+    Order.hasOne(models.Shipping, {
+      foreignKey: {
+        name: 'orderId',
+        allowNull: false
+      },
+      onDelete: 'RESTRICT'
+    });
+
+    Order.hasOne(models.Payment, {
+      foreignKey: {
+        name: 'orderId',
         allowNull: false
       },
       onDelete: 'RESTRICT'

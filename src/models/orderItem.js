@@ -40,11 +40,12 @@ module.exports = (sequelize, DataTypes) => {
       
     OrderItem.belongsTo(models.Order, {
       foreignKey: {
-        name: 'orederId',
+        name: 'orderId',
         allowNull: false
       },
       onDelete: 'RESTRICT'
     });
+
     OrderItem.belongsTo(models.DeliveryType, {
       foreignKey: {
         name: 'deliveryTypeId',
