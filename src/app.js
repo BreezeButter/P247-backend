@@ -26,7 +26,7 @@ app.use('/auth',authRoute);
 
 app.use('/',(req,res)=>{
     console.log('######',req.body)
-    res.status(200).send(req.body)
+    res.status(500).send({msg: 'error 500 at app.js'})
     
 })
 
