@@ -26,6 +26,7 @@ exports.login = async (req, res, next) => {
     const user = await User.findOne({
       where: { email: email },
     });
+    console.log('##############',user)
     // if(!user){
     //     createError('No this user', 400);
     // }
@@ -35,9 +36,19 @@ exports.login = async (req, res, next) => {
     // console.log(isCorrect)
 
     if (isCorrect) {
-      res.json({ msg: "login" });
+        const accessToken = tokenService.sign({ id: user.userId });
+        console.log('payload login',user.userId)
+        res.status(200).json({ accessToken });
     } else res.json({ msg: "login-not success" });
   } catch (err) {
     next(err);
   }
 };
+
+exports.getMe = (req, res, next) => {
+  res.status(200).json({ user: req.user });
+};
+
+
+
+
