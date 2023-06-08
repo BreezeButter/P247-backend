@@ -7,44 +7,50 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
+      notEmpty: {
+        args: true,
+        msg: "code cannot be empty"
+     }
     },
     userName: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
+      notEmpty: {
+        args: true,
+        msg: "code cannot be empty"
+     }
     },
     passWord: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
+      notEmpty: {
+        args: true,
+        msg: "code cannot be empty"
+     }
     },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
+      notEmpty: {
+        args: true,
+        msg: "code cannot be empty"
+     }
     },
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
+      notEmpty: {
+        args: true,
+        msg: "code cannot be empty"
+     }
     },
     email: {
       type: DataTypes.STRING,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
+      notEmpty: {
+        args: true,
+        msg: "code cannot be empty"
+     }
     },
     mobile: {
       type: DataTypes.STRING(22),
