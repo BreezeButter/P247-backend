@@ -5,6 +5,7 @@ const morgan = require('morgan');
 // const helmet = require('helmet');
 // const rateLimit = require('express-rate-limit');
 const authRoute = require('./routes/auth-route');
+const productRoute = require('./routes/product');
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV === 'development') {
 // );
 
 app.use('/auth',authRoute);
+app.use('/product',productRoute);
 
 app.use('/',(req,res)=>{
     console.log('######',req.body)

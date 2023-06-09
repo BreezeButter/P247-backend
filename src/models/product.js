@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: true,
         },
       }, 
-      prodcuctType:  DataTypes.ENUM('food', 'toy'),
+      productType:  DataTypes.ENUM('food', 'toy'),
       foodType:  DataTypes.ENUM('dry', 'wet'),
       petType:  DataTypes.STRING(100),
       productWeight: DataTypes.INTEGER,
