@@ -46,13 +46,6 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'RESTRICT'
     });
 
-    OrderItem.belongsTo(models.DeliveryType, {
-      foreignKey: {
-        name: 'deliveryTypeId',
-        allowNull: false
-      },
-      onDelete: 'RESTRICT'
-    });
       
   };
     return OrderItem;

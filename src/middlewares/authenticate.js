@@ -17,9 +17,7 @@ module.exports = async (req, res, next) => {
     }
 
     const payload = tokenService.verify(token);
-    console.log(payload)
-    console.log(payload.id)
-    console.log(payload.iat)
+  
 
     const user = await authService.getUserById(payload.id);
     if (!user) {

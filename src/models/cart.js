@@ -38,13 +38,6 @@ Cart.associate = models => {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       });
-      Cart.belongsTo(models.DeliveryType, {
-        foreignKey: {
-          name: 'deliveryTypeId',
-          allowNull: false
-        },
-        onDelete: 'RESTRICT'
-      });
   };
     return Cart;
   };
