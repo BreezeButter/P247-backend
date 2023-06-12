@@ -6,6 +6,7 @@ const morgan = require('morgan');
 // const rateLimit = require('express-rate-limit');
 const authRoute = require('./routes/auth-route');
 const productRoute = require('./routes/product');
+const cartRoute = require('./routes/cart')
 
 const app = express();
 app.use(cors());
@@ -25,9 +26,10 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use('/auth',authRoute);
 app.use('/product',productRoute);
+app.use('/cart',cartRoute)
 
 app.use('/',(req,res)=>{
-    console.log('######',req.body)
+  
     res.status(500).send({msg: 'error 500 at app.js'})
     
 })
