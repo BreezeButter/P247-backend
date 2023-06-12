@@ -27,7 +27,7 @@ Cart.associate = models => {
         name: 'productId',
         allowNull: false
       },
-      onDelete: 'RESTRICT'
+      onDelete: 'CASCADE'
     });
 
     Cart.belongsTo(models.User, {
