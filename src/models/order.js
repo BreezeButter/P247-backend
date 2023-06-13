@@ -11,14 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           notEmpty: true,
         },
-      }, productAmount : DataTypes.INTEGER,
-         oerderStatus : {
-          type: DataTypes.ENUM('inCart','paymentSuccess','delivery','deliverySuccess','reject'),
-          allowNull: false,
-          validate: {
-            notEmpty: true,
-          },
-        }
+      }, 
 },
 {
     underscored: true
@@ -32,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
         name: 'orderId',
         allowNull: false
       },
-      onDelete: 'RESTRICT'
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     });
 
     Order.hasOne(models.Shipping, {
@@ -40,7 +34,8 @@ module.exports = (sequelize, DataTypes) => {
         name: 'orderId',
         allowNull: false
       },
-      onDelete: 'RESTRICT'
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     });
 
     Order.hasOne(models.Payment, {
@@ -48,7 +43,8 @@ module.exports = (sequelize, DataTypes) => {
         name: 'orderId',
         allowNull: false
       },
-      onDelete: 'RESTRICT'
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     });
 
   

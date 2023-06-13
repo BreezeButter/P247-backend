@@ -1,14 +1,27 @@
 
 module.exports = (sequelize, DataTypes) => {
     const  Payment  = sequelize.define("Payment", {
-        PaymentId: {
-        type: DataTypes.STRING,
+        paymentId: {
+        autoIncrement: true,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         validate: {
           notEmpty: true,
         },
-      },},
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
+      },
+      status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      },
+    },
 {
     underscored: true
 }
@@ -21,7 +34,16 @@ module.exports = (sequelize, DataTypes) => {
         name: 'orderId',
         allowNull: false
       },
-      onDelete: 'RESTRICT'
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    });
+    Payment.belongsTo(models.User, {
+      foreignKey: {
+        name: 'userId',
+        allowNull: false
+      },
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     });
 
   };

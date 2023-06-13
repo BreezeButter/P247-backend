@@ -43,7 +43,8 @@ module.exports = (sequelize, DataTypes) => {
         name: 'orderId',
         allowNull: false
       },
-      onDelete: 'RESTRICT'
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     });
 
       
