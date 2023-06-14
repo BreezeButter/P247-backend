@@ -38,7 +38,8 @@ exports.addCart = async (req, res, next) => {
         include: [
          { model: Product }]
        });
-      res.status(200).json(cart);
+       
+      res.status(200).json(cartAll);
     } else {
       const cart = await Cart.create(value);
       res.status(200).json(cart);

@@ -72,3 +72,26 @@ exports.uploadProfile = async (req, res, next) => {
   }
 } 
 
+exports.editProfile = async (req, res, next) => {
+
+  try{
+    const value  = req.body;
+    console.log('first', value)
+    value.userId = req.user.userId;
+    const ok = await User.update(req.body,{
+      where: {
+        userId : value.userId,
+      },
+    })
+
+    const user = await User.findOne({
+      where: { userId: value.userId },
+    });
+
+    res.status(200).json(user)
+
+  }catch (err) {
+    next(err);
+  }
+} 
+
