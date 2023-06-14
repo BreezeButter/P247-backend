@@ -51,7 +51,14 @@ module.exports = (sequelize, DataTypes) => {
           name: 'productId',
           allowNull: false
         },
-        onDelete: 'CASCADE'
+        onDelete: 'RESTRICT',
+      });
+      Product.hasMany(models.OrderItem, {
+        foreignKey: {
+          name: 'productId',
+          allowNull: false
+        },
+        onDelete: 'RESTRICT',
       });
       
     };

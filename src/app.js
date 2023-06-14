@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const authRoute = require('./routes/auth-route');
 const productRoute = require('./routes/product');
 const cartRoute = require('./routes/cart')
+const orderRoute = require('./routes/order-route')
 
 const app = express();
 app.use(cors());
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/auth',authRoute);
 app.use('/product',productRoute);
 app.use('/cart',cartRoute)
+app.use('/order',orderRoute)
 
 app.use('/',(req,res)=>{
   

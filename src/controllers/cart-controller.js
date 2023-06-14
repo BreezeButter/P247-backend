@@ -31,6 +31,13 @@ exports.addCart = async (req, res, next) => {
       }
 
       );
+
+
+      const cartAll = await Cart.findAll({
+        where: { userId: value.userId } ,
+        include: [
+         { model: Product }]
+       });
       res.status(200).json(cart);
     } else {
       const cart = await Cart.create(value);
@@ -122,13 +129,18 @@ exports.decrement = async (req, res, next) => {
       },
     })
 
+    if(existingItem.productAmount>1){
 
-    const cart = await Cart.update({productAmount: existingItem.productAmount - 1 },{
-      where: {
-        productId: existingItem.productId,
-      },
+      const cart = await Cart.update({productAmount: existingItem.productAmount - 1 },{
+        where: {
+          productId: existingItem.productId,
+        },
+      }
+  )
     }
-)
+
+
+
     
 
     const cartAll = await Cart.findAll({
@@ -201,24 +213,17 @@ exports.checkout = async (req, res, next) => {
     const existingItem = await Cart.findAll({
       where: {userId: value.userId} 
     })
-   
-    
       const modify = JSON.parse(JSON.stringify(existingItem))
 
-    const { orderId }  = await Order.create()
+      const { orderId }  = await Order.create()
 
- 
-
-    const rs =  modify.map( el => {
+     const rs =  modify.map( el => {
       delete el.cartId
       el['orderId'] = orderId  
       return el
     } )
 
-
-    
     const rs1 = await modify.map( el => OrderItem.create(el))
-
 
     const delCart = await Cart.destroy({
       where: {userId: value.userId} 

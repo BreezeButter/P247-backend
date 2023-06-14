@@ -63,7 +63,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
      },
-    profileImage: DataTypes.STRING,
+    profileImage: {
+      defaultValue: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+      type:DataTypes.STRING
+    },
     address: DataTypes.STRING,
     city: DataTypes.STRING,
     country: DataTypes.STRING,
